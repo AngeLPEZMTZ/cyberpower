@@ -90,7 +90,7 @@ router.post('/login-proceso', async (req, res) => {
                 // Opcional: Limpiar la tabla de la DB para que no se dupliquen luego
                 await pool.query('DELETE FROM carrito_guardado WHERE nombre_usuario_completo = $1', [nombreCompleto]);
             }
-            res.redirect('/inicio');
+            res.redirect('/');
         } else {
             res.render('login', { error: "Usuario o contraseña incorrectos." });
         }
@@ -111,7 +111,7 @@ router.post('/registro-proceso', async (req, res) => {
         const query = 'INSERT INTO usuarios (nombre_completo, email, nombre_usuario, password_usuario) VALUES ($1, $2, $3, $4)';
         await pool.query(query, [nombre, email, user, pass]);
         // Si todo sale bien, lo mandamos al login para que entre
-        res.redirect('/cyber/login-page'); 
+        res.redirect('/login-page'); 
     } catch (err) {
         console.error("Error al registrar:", err);
         res.status(500).send("El usuario o correo ya existen.");
@@ -173,11 +173,11 @@ router.get('/logout', async (req, res) => {
         req.session.destroy((err) => {
             if (err) return res.redirect('/cyber/inicio');
             res.clearCookie('connect.sid'); 
-            res.redirect('/inicio');
+            res.redirect('/');
         });
     } catch (err) {
         console.error("Error al guardar carrito antes del logout:", err);
-        res.redirect('/inicio');
+        res.redirect('/');
     }
 });
 
