@@ -6,9 +6,9 @@ var logger = require('morgan');
 // 1. Importar express-session
 var session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var cyberRouter = require('./routes/cyber');
+var usersRouter = require('./routes/users');
+
 
 var app = express(); // LA VARIABLE APP SE CREA AQUÍ
 
@@ -38,9 +38,9 @@ app.use((req, res, next) => {
 
 
 // 4. DEFINIR LAS RUTAS
-app.use('/', indexRouter);
+app.use('/', cyberRouter);
 app.use('/users', usersRouter);
-app.use('/cyber', cyberRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
