@@ -3,7 +3,7 @@ var router = express.Router();
 var pool = require('../config/database');
 
 /* GET home page. */
-router.get('/inicio', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
 const result = await pool.query('SELECT * FROM cyberpower')
 res.render('cyber', { listaCyber: result.rows});
 });
