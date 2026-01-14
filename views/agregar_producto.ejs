@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Nuevo Producto - CyberPower</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+    <%- include('partials/header') %>
+
+    <main class="login-container">
+        <div class="login-header">
+            <h2>NUEVO HARDWARE</h2>
+            <p>Ingresa los detalles técnicos para el catálogo</p>
+        </div>
+
+        <div class="login-box">
+            <form action="/cyber/guardar-producto" method="POST">
+                
+                <div class="form-group">
+                    <label>Nombre del Hardware</label>
+                    <input type="text" name="nombre_producto" placeholder="Ej: ROG Strix G16" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Marca</label>
+                    <input type="text" name="marca_producto" placeholder="Ej: ASUS, NVIDIA" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Precio de Venta</label>
+                    <input type="text" name="precio_producto" placeholder="Ej: $44,999.00" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción Técnica</label>
+                    <textarea name="desc_producto" placeholder="Detalla RAM, VRAM, Procesador..." class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen (Nombre del archivo)</label>
+                    <input type="text" name="foto_producto" placeholder="Ej: ID23.webp" class="form-control">
+                    <small style="color: #666; font-size: 11px; display: block; margin-top: 5px;">
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de Hardware</label>
+                    <select name="tipo_producto" class="form-control">
+                        <option value="Laptop">Laptop</option>
+                        <option value="GPU">Tarjeta de Video</option>
+                        <option value="CPU">Procesador</option>
+                        <option value="Motherboard">Tarjeta Madre</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Gabinete">Gabinete</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-login" style="margin-top: 20px;">Publicar Producto</button>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="/cyber/administrar" style="color: #888; text-decoration: none; font-size: 14px;">
+                        ← Volver al Panel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

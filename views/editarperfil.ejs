@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuración de Cuenta - CyberPower</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+    <%- include('partials/header') %>
+
+    <main class="login-container" style="margin-top: 100px;">
+        <div class="login-header">
+            <h2>Mi Perfil</h2>
+            <p>Actualiza tu información personal</p>
+        </div>
+        <div class="login-box">
+            <% if (typeof success !== 'undefined' || Object.keys(locals).includes('success')) { %>
+    <div style="background: rgba(0, 255, 0, 0.1); color: #00ff00; padding: 10px; border-radius: 5px; margin-bottom: 20px; text-align: center; border: 1px solid #00ff00;">
+        ¡Perfil actualizado con éxito!
+    </div>
+<% } %>
+            <form action="/cyber/actualizar-perfil" method="POST">
+                <div class="form-group">
+                    <label>Nombre de Usuario (No editable)</label>
+                    <input type="text" value="<%= user.nombre_usuario %>" class="form-control" style="opacity: 0.6; cursor: not-allowed;" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="nombre" value="<%= user.nombre_completo %>" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="email" value="<%= user.email %>" class="form-control" required>
+                </div> 
+                <div class="form-group">
+                    <label>Cambiar Contraseña</label>
+                    <input type="password" name="new_pass" class="form-control" placeholder="Escribe una nueva o deja en blanco">
+                </div>
+                <button type="submit" class="btn-login" style="margin-top: 10px;">Guardar Cambios</button>
+            </form>
+        </div>
+        <div class="register-box">
+            <a href="/cyber/logout" style="color: #ff3333; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+                Cerrar Sesión Segura
+            </a>
+        </div>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

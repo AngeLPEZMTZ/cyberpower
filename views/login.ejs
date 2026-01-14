@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CyberPower Login</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+    <%- include('partials/header') %> 
+    <br>
+        <!-- Contenido Principal -->
+    <main class="login-container">
+        <div class="login-header">
+            <h2>Iniciar Sesión</h2>
+            <p>Accede a tu cuenta de Cyber Power</p>
+        </div>
+        
+        <div class="login-box">
+            <form action="/cyber/login-proceso" method="POST">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario o email</label>
+                    <input type="text" id="username" name="user" class="form-control" placeholder="Usuario o email" required>
+                </div>
+                
+                <div class="form-group">
+                    <div class="password-header">
+                        <label for="password">Contraseña</label>
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <input type="password" id="password" name="pass" class="form-control" placeholder="Contraseña" required>
+                </div>
+                
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+        </div>
+        
+        <div class="register-box">
+            <p>¿Nuevo en Cyber Power?</p>
+            <a href="/cyber/registro" class="btn-register">Registrarse</a>
+        </div>
+    </main>
+    <br>
+    <!--FOOTER-->
+    <%- include('partials/footer') %>
+    <!--FOOTER-->
+</body>
+</html>

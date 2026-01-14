@@ -1,0 +1,37 @@
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+            <a href="/cyber/inicio" class="logo-link">
+            CYBERPOWER
+            </a>
+            </div>
+            <div class="header-icons">
+                <div class="search-box">
+    <form action="/cyber/buscar" method="GET" style="display: flex; align-items: center;">
+        <input type="text" name="query" placeholder="Buscar hardware..." class="search-input">
+    </form>
+</div>
+
+<div class="user-actions">
+    <% if (locals.usuario) { %>
+    <a href="/cyber/editarperfil" class="user-name-link">
+    <%= usuario %>
+        </a>
+    <% } else { %>
+        <a href="/cyber/login-page" target="_blank" class="profile-link">
+            <span class="icon-user"></span>
+        </a>
+    <% } %>
+</div>
+
+<a href="/cyber/carrito" class="icon-cart" style="position: relative; text-decoration: none;">    
+    <% if (typeof carrito !== 'undefined' && carrito.length > 0) { %>
+        <span class="cart-count-badge">
+            <%= carrito.length %>
+        </span>
+    <% } %>
+</a>
+
+
+    </header>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Power - Tecnología de Vanguardia</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+
+<!--HEADER-->
+<%- include('partials/header') %>
+<!--HEADER-->
+
+
+<body>
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>TECNOLOGÍA <span>EXTREMA</span></h2>
+                <p>Potencia tu experiencia gaming con los componentes de más alto rendimiento del mercado. En Cyber Power encontrarás hardware seleccionado para exigir el máximo a tus juegos y aplicaciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-title">
+                <h2>PRODUCTOS DESTACADOS</h2>
+                <p>Los componentes más potentes y solicitados por nuestra comunidad de gamers y profesionales</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="products-grid">
+                <% listaCyber.forEach(productoTmp =>{ %>
+            <a href="/cyber/detalle/<%= productoTmp.id %>" class="product-card-link">
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #1a1a2e;">
+                        <img src="/images/productos/<%= productoTmp.foto_producto %>" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3><%= productoTmp.nombre_producto%></h3>
+                        <p><%= productoTmp.marca_producto%> </p>
+                        <div class="product-price">
+                            <div>
+                            <p class="price"><%= productoTmp.precio_producto%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de marcas -->
+<section class="brands">
+    <div class="container">
+        <div class="brands-grid">
+            <a href="/cyber/filtro/ASUS" class="brand-item">ASUS</a>
+            <a href="/cyber/filtro/MSI" class="brand-item">MSI</a>
+            <a href="/cyber/filtro/GIGABYTE" class="brand-item">GIGABYTE</a>
+            <a href="/cyber/filtro/NVIDIA" class="brand-item">NVIDIA</a>
+            <a href="/cyber/filtro/AMD" class="brand-item">AMD</a>
+            <a href="/cyber/filtro/INTEL" class="brand-item">INTEL</a>
+            <a href="/cyber/inicio" class="brand-item" style="background: #333;">TODOS</a>
+        </div>
+    </div>
+</section>
+</body>
+
+    <!--FOOTER-->
+    <%- include('partials/footer') %>
+    <!--FOOTER-->
+
+</html>

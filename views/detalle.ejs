@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><%= producto.nombre_producto %> - Cyber Power</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="bg-dark text-white">
+    <%- include('partials/header') %> 
+    <div class="container" style="margin-top: 50px;">
+        <div class="row" style="display: flex; gap: 40px; align-items: center;">
+            <div style="flex: 1; background: #1a1a2e; padding: 20px; border-radius: 10px;">
+                <img src="/images/productos/<%= producto.foto_producto %>" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+                <h1 style="font-size: 3rem; color: #ff4d4d;"><%= producto.nombre_producto %></h1>
+                <p style="font-size: 1.2rem; color: #aaa;">Marca: <%= producto.marca_producto %></p>
+                <p style="font-size: 1.2rem; color: #aaa;">Categoría: <%= producto.tipo_producto %></p>
+                <hr style="border: 0.5px solid #333; margin: 20px 0;">
+                <p style="font-size: 1.1rem; line-height: 1.8;"><%= producto.desc_producto %> </p>
+                <h2 style="font-size: 2.5rem; margin: 30px 0;"><%= producto.precio_producto %></h2>
+                <form action="/cyber/carrito/agregar/<%= producto.id %>" method="POST">
+                <button class="btn-buy" style="padding: 15px 40px; font-size: 1.2rem;">AÑADIR AL CARRITO</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--FOOTER-->
+    <%- include('partials/footer') %>
+    <!--FOOTER-->
+</body>
+</html>
+

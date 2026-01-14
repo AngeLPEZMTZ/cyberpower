@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrar - CyberPower</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+    <%- include('partials/header') %>
+
+    <main class="products-container" style="margin-top: 100px;">
+        <h1 style="color: white; text-align: center; margin-bottom: 30px;">Panel de Administración</h1>
+        
+        <div class="product-grid">
+            <div class="product-card" style="border: 2px dashed #c00a0a; background: rgba(192, 10, 10, 0.05); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 350px;">
+                <div style="font-size: 50px; color: #c00a0a;">+</div>
+                <h3 style="color: white;">Nuevo Producto</h3>
+                <a href="/cyber/agregar_producto" class="btn-login" style="margin-top: 20px; text-decoration: none;">
+                    AGREGAR
+                </a>
+            </div>
+
+<% productos.forEach(producto => { %> 
+        <div class="product-card">
+            <img src="/images/productos/<%= producto.foto_producto %>" alt="">
+            <div class="product-info">
+    <h3><%= producto.nombre_producto %></h3>
+    <p class="price"><%= producto.precio_producto %></p>
+    
+    <a href="/cyber/editar-producto/<%= producto.id %>" target="_blank" class="btn-login" 
+       style="background-color: #444; margin-top: 10px; display: block; text-align: center; text-decoration: none;">
+        EDITAR PRODUCTO
+    </a>
+
+    <form action="/cyber/eliminar-producto/<%= producto.id %>" method="POST" 
+          onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.');"
+          style="margin-top: 8px;">
+        <button type="submit" class="btn-login" 
+                style="background-color: #c00a0a; width: 100%; cursor: pointer;">
+            BORRAR PRODUCTO
+        </button>
+    </form>
+</div>
+        </div>
+    <% }); %>
+        </div>
+    </main>
+    <br>
+    <%- include('partials/footer') %>
+</body>
+</html>

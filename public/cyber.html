@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Power - Crear Cuenta</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+
+    <header class="header" style="width: 100%; position: absolute; top: 0;">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="/cyber/inicio" style="text-decoration: none;">
+                        <h1 style="color: #c00a0a; font-size: 28px;">CYBER<span style="color: #f5f5f5;">POWER</span></h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="login-container" style="margin-top: 100px; margin-bottom: 100px;">
+        <div class="login-header">
+            <h2>Crear Cuenta</h2>
+            <p>Únete a la élite del hardware</p>
+        </div>
+        
+        <div class="login-box">
+            <form action="/cyber/registro-proceso" method="POST">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="email" class="form-control" placeholder="email@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" name="user" class="form-control" placeholder="Usuario" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="pass" class="form-control" placeholder="Mínimo 8 caracteres" required>
+                </div>
+                
+                <button type="submit" class="btn-login">Registrarme</button>
+            </form>
+        </div>
+        
+        <div class="register-box">
+            <p>¿Ya tienes una cuenta?</p>
+            <a href="/cyber/login-page" class="btn-register">Volver al Login</a>
+        </div>
+    </main>
+
+    <footer class="footer" style="width: 100%; padding: 20px 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    <p>&copy; 2026 Cyber Power. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

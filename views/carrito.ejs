@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras - CyberPower</title>
+    <link rel="stylesheet" href="/stylesheets/style_cyber.css">
+</head>
+<body class="login-page-body">
+    <%- include('partials/header') %>
+
+    <main class="cart-desktop-container">
+    <h1 class="cart-main-title">GESTIÓN DE COMPRAS CYBERPOWER</h1>
+
+    <div class="cart-wide-box">
+        <% if (carrito && carrito.length > 0) { %>
+            <table class="cart-desktop-table">
+                <thead>
+                    <tr>
+                        <th class="th-img">VISTA</th>
+                        <th class="th-name">ESPECIFICACIONES DEL PRODUCTO</th>
+                        <th class="th-price">PRECIO UNITARIO</th>
+                        <th class="th-action">CONTROL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% carrito.forEach((item, index) => { %>
+                        <tr>
+                            <td class="td-img">
+                                <img src="/images/productos/<%= item.foto %>" alt="Hardware">
+                            </td>
+                            <td class="td-name">
+                                <span class="product-full-name"><%= item.nombre %></span>
+                            </td>
+                            <td class="td-price">
+                                <span class="neon-price"><%= item.precio %></span>
+                            </td>
+                            <td class="td-action">
+                                <a href="/cyber/carrito/eliminar/<%= index %>" class="desktop-btn-delete">
+                                    <i class="fas fa-trash"></i> ELIMINAR
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
+            <div class="cart-summary-bar">
+                <div class="summary-info">
+                    <span>PRODUCTOS EN CARRITO: <strong><%= carrito.length %></strong></span>
+                </div>
+                <form action="/cyber/carrito/finalizar" method="POST">
+                    <button type="submit" class="btn-checkout-desktop">
+                        CONFIRMAR Y FINALIZAR COMPRA
+                    </button>
+                </form>
+            </div>
+        <% } else { %>
+            <div class="empty-state-desktop">
+                <p>Tu lista de hardware está vacía.</p>
+                <a href="/cyber/inicio" class="btn-back">EXPLORAR CATÁLOGO</a>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
