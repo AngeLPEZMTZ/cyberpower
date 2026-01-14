@@ -171,7 +171,7 @@ router.get('/logout', async (req, res) => {
         }
         // Una vez guardados, destruimos la sesión normalmente
         req.session.destroy((err) => {
-            if (err) return res.redirect('/inicio');
+            if (err) return res.redirect('/');
             res.clearCookie('connect.sid'); 
             res.redirect('/');
         });
