@@ -19,7 +19,7 @@
         ¡Perfil actualizado con éxito!
     </div>
 <% } %>
-            <form action="/cyber/actualizar-perfil" method="POST">
+            <form action="/actualizar-perfil" method="POST">
                 <div class="form-group">
                     <label>Nombre de Usuario (No editable)</label>
                     <input type="text" value="<%= user.nombre_usuario %>" class="form-control" style="opacity: 0.6; cursor: not-allowed;" disabled>
@@ -40,7 +40,7 @@
             </form>
         </div>
         <div class="register-box">
-            <a href="/cyber/logout" style="color: #ff3333; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+            <a href="/logout" style="color: #ff3333; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
                 Cerrar Sesión Segura
             </a>
         </div>

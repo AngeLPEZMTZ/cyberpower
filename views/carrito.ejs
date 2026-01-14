@@ -35,7 +35,7 @@
                                 <span class="neon-price"><%= item.precio %></span>
                             </td>
                             <td class="td-action">
-                                <a href="/cyber/carrito/eliminar/<%= index %>" class="desktop-btn-delete">
+                                <a href="/carrito/eliminar/<%= index %>" class="desktop-btn-delete">
                                     <i class="fas fa-trash"></i> ELIMINAR
                                 </a>
                             </td>
@@ -48,7 +48,7 @@
                 <div class="summary-info">
                     <span>PRODUCTOS EN CARRITO: <strong><%= carrito.length %></strong></span>
                 </div>
-                <form action="/cyber/carrito/finalizar" method="POST">
+                <form action="/carrito/finalizar" method="POST">
                     <button type="submit" class="btn-checkout-desktop">
                         CONFIRMAR Y FINALIZAR COMPRA
                     </button>
@@ -57,7 +57,7 @@
         <% } else { %>
             <div class="empty-state-desktop">
                 <p>Tu lista de hardware está vacía.</p>
-                <a href="/cyber/inicio" class="btn-back">EXPLORAR CATÁLOGO</a>
+                <a href="/inicio" class="btn-back">EXPLORAR CATÁLOGO</a>
             </div>
         <% } %>
     </div>
