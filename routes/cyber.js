@@ -90,7 +90,7 @@ router.post('/login-proceso', async (req, res) => {
                 // Opcional: Limpiar la tabla de la DB para que no se dupliquen luego
                 await pool.query('DELETE FROM carrito_guardado WHERE nombre_usuario_completo = $1', [nombreCompleto]);
             }
-            res.redirect('/cyber/inicio');
+            res.redirect('/inicio');
         } else {
             res.render('login', { error: "Usuario o contraseña incorrectos." });
         }
@@ -126,7 +126,7 @@ router.post('/registro-proceso', async (req, res) => {
 router.get('/editarperfil', async (req, res) => {
     // 1. Verificamos sesión
     if (!req.session.usuarioLogueado) {
-        return res.redirect('/cyber/login-page');
+        return res.redirect('/login-page');
     }
     try {
         // 2. Consultamos Neon usando el nombre guardado en la sesión
@@ -137,7 +137,7 @@ router.get('/editarperfil', async (req, res) => {
             // 3. Enviamos el objeto 'user' a la vista 'editarperfil'
             res.render('editarperfil', { user: result.rows[0] }); 
         } else {
-            res.redirect('/cyber/logout');
+            res.redirect('/logout');
         }
     } catch (err) {
         console.error("Error en BD:", err);
@@ -151,7 +151,7 @@ router.post('/actualizar-perfil', async (req, res) => {
     req.session.usuarioLogueado = nombre;
     
     // Redirigimos enviando un parámetro de éxito
-    res.redirect('/cyber/editarperfil?success=true'); 
+    res.redirect('/editarperfil?success=true'); 
 });
 
 // Ruta para cerrar sesión de manera segura
@@ -173,11 +173,11 @@ router.get('/logout', async (req, res) => {
         req.session.destroy((err) => {
             if (err) return res.redirect('/cyber/inicio');
             res.clearCookie('connect.sid'); 
-            res.redirect('/cyber/inicio');
+            res.redirect('/inicio');
         });
     } catch (err) {
         console.error("Error al guardar carrito antes del logout:", err);
-        res.redirect('/cyber/inicio');
+        res.redirect('/inicio');
     }
 });
 
@@ -225,7 +225,7 @@ router.post('/actualizar-producto/:id', async (req, res) => {
         `;
         
         await pool.query(query, [nombre, precio, descripcion, id]);
-        res.redirect('/cyber/administrar'); 
+        res.redirect('/administrar'); 
     } catch (err) {
         console.error("Error al actualizar:", err);
         res.status(500).send("Error al actualizar los datos en Neon");
@@ -241,7 +241,7 @@ router.post('/guardar-producto', async (req, res) => {
             VALUES ($1, $2, $3, $4, $5, $6)
         `;
         await pool.query(query, [nombre, precio, marca, foto, tipo, descripcion]);
-        res.redirect('/cyber/administrar');
+        res.redirect('/administrar');
     } catch (err) {
         console.error("Error al insertar en Neon:", err);
         res.status(500).send("No se pudo agregar el producto. Revisa la consola.");
@@ -262,7 +262,7 @@ router.post('/eliminar-producto/:id', async (req, res) => {
         await pool.query(query, [id]);
 
         // Redirigimos al panel de administración para actualizar la vista
-        res.redirect('/cyber/administrar'); 
+        res.redirect('/administrar'); 
     } catch (err) {
         console.error("Error al eliminar producto:", err);
         res.status(500).send("Error al intentar eliminar el registro de la base de datos.");
@@ -305,7 +305,7 @@ router.post('/carrito/agregar/:id', estaAutenticado, async (req, res) => {
                 foto: producto.foto_producto
             });
         }
-        res.redirect('/cyber/carrito');
+        res.redirect('/carrito');
     } catch (err) {
         console.error("Error al agregar al carrito:", err);
         res.status(500).send("Error interno del servidor");
@@ -328,7 +328,7 @@ router.get('/carrito/eliminar/:index', (req, res) => {
         req.session.carrito.splice(index, 1);
     }
     
-    res.redirect('/cyber/carrito');
+    res.redirect('/carrito');
 });
 
 
